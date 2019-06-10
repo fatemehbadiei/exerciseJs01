@@ -1,0 +1,40 @@
+<script>
+    function getData() {
+        var app = document.getElementById('app');
+        var cookies = document.cookie.split(";");
+
+        with (cookies[0]) {
+            var getData = substring(7, length - 1);
+
+        }
+        with (cookies[1]) {
+            var price = substring(8, length - 1);
+        }
+
+        var splitor = getData.split(",");
+        var prc = price.split(",");
+
+        var table = "<table border='1px'>";
+        table += "<tr>";
+        table += "<td>ID</td><td>TITLE</td><td>price</td>";
+        table += "</tr>";
+        var id = 1;
+        for (var i in splitor) {
+            table += "<tr>";
+            table += "<td>" + id++ + "</td>";
+            table += "<td>" + splitor[i] + "</td>";
+            table += "<td>" + prc[i] + "</td>";
+            table += "</tr>";
+
+
+        }
+        table += "</table>";
+        app.innerHTML = table;
+
+
+    }
+
+</script>
+<body onload="getData()">
+<br>
+<div id="app"></div>

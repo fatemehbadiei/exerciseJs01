@@ -1,0 +1,29 @@
+<script>
+    function getData() {
+
+        var myDiv = document.getElementById('myDiv');
+        var items = document.getElementsByName('items');
+        var prices = document.getElementsByTagName("input");
+        console.log(prices);
+        var orders = "";
+        var priceContainer = "";
+        for (var i in items) {
+            if (items[i].checked) {
+                orders += items[i].value + ",";
+                priceContainer += prices[i].getAttribute('data-price') + ",";
+            }
+        }
+
+        document.cookie = "orders=" + orders;
+        document.cookie = "prices=" + priceContainer;
+        window.location = "inbox.html"
+    }
+</script>
+<input type="checkbox" name="items" value="php" data-price="15000">php
+<br>
+<input type="checkbox" name="items" value="java" data-price="20000">java
+<br>
+<input type="checkbox" name="items" value="python" data-price="25000">python
+<br>
+<div id="myDiv"></div>
+<button onclick="getData()">get</button>
